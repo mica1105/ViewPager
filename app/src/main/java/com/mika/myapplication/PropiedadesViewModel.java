@@ -11,23 +11,22 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.ArrayList;
 
 public class PropiedadesViewModel extends AndroidViewModel {
-    private MutableLiveData<ArrayList<Fragment>> inmuebles;
-
+    private MutableLiveData<ArrayList<Inmueble>> inmuebles;
     public PropiedadesViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<ArrayList<Fragment>> getInmuebles() {
+    public LiveData<ArrayList<Inmueble>> getInmuebles() {
         if (inmuebles==null){
-            inmuebles=new MutableLiveData<>();
+            inmuebles= new MutableLiveData<>();
         }
         return inmuebles;
     }
-    public void recuperarFragment(){
-        ArrayList propiedades= new ArrayList();
-        propiedades.add(new InmuebleFragment());
-        propiedades.add(new InmuebleFragment());
-        //propiedades.add(new InmuebleFragment2());
+
+    public void cargarInmuebles(){
+        ArrayList<Inmueble> propiedades= new ArrayList<>();
+        propiedades.add(new Inmueble(R.drawable.casa1,"España 489",4,"casa","domestico",25000,true));
+        propiedades.add(new Inmueble(R.drawable.casa2,"Mitre 1080",3,"casa","domestico",20000,true));
         inmuebles.setValue(propiedades);
     }
 }

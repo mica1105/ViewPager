@@ -21,7 +21,6 @@ public class InmuebleFragment extends Fragment {
     private CheckBox disponible;
     private InmuebleViewModel vm;
 
-    public static final String ARG_OBJECT = "object";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,27 +37,18 @@ public class InmuebleFragment extends Fragment {
         foto=v.findViewById(R.id.ivFoto);
         disponible=v.findViewById(R.id.cbDisponible);
         vm= ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication()).create(InmuebleViewModel.class);
-        vm.getInmuebles().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+        vm.getInmueble().observe(getViewLifecycleOwner(), new Observer<Inmueble>() {
             @Override
-            public void onChanged(ArrayList<Inmueble> inmuebles) {
-                for (Inmueble inmueble:inmuebles){
-                    domicilio.setText(inmueble.getDireccion());
-                    ambietes.setText(inmueble.getAmbientes()+"");
-                    tipo.setText(inmueble.getTipo());
-                    uso.setText(inmueble.getUso());
-                    precio.setText(inmueble.getPrecio()+"");
-                    foto.setImageResource(inmueble.getFoto());
-                    disponible.setChecked(inmueble.getDisponible());
-                }
+            public void onChanged(Inmueble inmueble) {
+                domicilio.setText(inmueble.getDireccion());
+                ambietes.setText(inmueble.getAmbientes()+"");
+                tipo.setText(inmueble.getTipo());
+                uso.setText(inmueble.getUso());
+                precio.setText(inmueble.getPrecio()+"");
+                foto.setImageResource(inmueble.getFoto());
+                disponible.setChecked(inmueble.getDisponible());
             }
         });
-        vm.cargarInmuebles();
-        /*domicilio.setText("España 489");
-        ambietes.setText("4");
-        tipo.setText("casa");
-        uso.setText("domestico");
-        precio.setText("25000");
-        foto.setImageResource(R.drawable.casa1);
-        disponible.setChecked(true);*/
+        vm.cargarInmueble(getArguments());
     }
 }

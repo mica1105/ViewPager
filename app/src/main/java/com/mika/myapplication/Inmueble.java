@@ -1,6 +1,10 @@
 package com.mika.myapplication;
 
-public class Inmueble {
+import android.se.omapi.SEService;
+
+import java.io.Serializable;
+
+public class Inmueble implements Serializable {
     private int foto;
     private String direccion;
     private int ambientes;

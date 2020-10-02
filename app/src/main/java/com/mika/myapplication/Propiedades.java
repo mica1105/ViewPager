@@ -35,20 +35,24 @@ public class Propiedades extends AppCompatActivity {
         tabLayout= new TabLayout(this);
         vm= ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(PropiedadesViewModel.class);
         appBar.addView(tabLayout);
-        vm.getInmuebles().observe(this, new Observer<ArrayList<Fragment>>() {
+        vm.getInmuebles().observe(this, new Observer<ArrayList<Inmueble>>() {
             @Override
-            public void onChanged(ArrayList<Fragment> fragments) {
+            public void onChanged(ArrayList<Inmueble> inmuebles) {
                 ViewPageAdapter adapter= new ViewPageAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
                 int numero= 0;
-                for(Fragment fragment :fragments) {
+                for(Inmueble inmueble :inmuebles) {
                     numero ++;
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("inmueble",inmueble);
+                    InmuebleFragment fragment= new InmuebleFragment();
+                    fragment.setArguments(bundle);
                     adapter.addFragments(fragment,"Inmueble "+ numero);
                 }
                 viewPager.setAdapter(adapter);
                 tabLayout.setupWithViewPager(viewPager);
             }
         });
-        vm.recuperarFragment();
+        vm.cargarInmuebles();
     }
 
     public class ViewPageAdapter extends FragmentPagerAdapter{
