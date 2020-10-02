@@ -39,14 +39,14 @@ public class Propiedades extends AppCompatActivity {
             @Override
             public void onChanged(ArrayList<Inmueble> inmuebles) {
                 ViewPageAdapter adapter= new ViewPageAdapter(getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-                int numero= 0;
+                int numero = 0;
                 for(Inmueble inmueble :inmuebles) {
                     numero ++;
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("inmueble",inmueble);
                     InmuebleFragment fragment= new InmuebleFragment();
                     fragment.setArguments(bundle);
-                    adapter.addFragments(fragment,"Inmueble "+ numero);
+                    adapter.addFragments(fragment,"Inmueble"+numero);
                 }
                 viewPager.setAdapter(adapter);
                 tabLayout.setupWithViewPager(viewPager);

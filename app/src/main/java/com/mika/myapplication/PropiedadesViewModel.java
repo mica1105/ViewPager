@@ -27,6 +27,8 @@ public class PropiedadesViewModel extends AndroidViewModel {
         ArrayList<Inmueble> propiedades= new ArrayList<>();
         propiedades.add(new Inmueble(R.drawable.casa1,"España 489",4,"casa","domestico",25000,true));
         propiedades.add(new Inmueble(R.drawable.casa2,"Mitre 1080",3,"casa","domestico",20000,true));
+        propiedades.add(new Inmueble(R.drawable.dpto1,"Av Illia 379",3,"departamento","domestico",18000,true));
+        propiedades.add(new Inmueble(R.drawable.local1,"Junin",2,"Local","comercial",25000,true));
         inmuebles.setValue(propiedades);
     }
 }
