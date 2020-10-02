@@ -26,7 +26,8 @@ public class PropiedadesViewModel extends AndroidViewModel {
     public void recuperarFragment(){
         ArrayList propiedades= new ArrayList();
         propiedades.add(new InmuebleFragment());
-        propiedades.add(new InmuebleFragment2());
+        propiedades.add(new InmuebleFragment());
+        //propiedades.add(new InmuebleFragment2());
         inmuebles.setValue(propiedades);
     }
 }
